@@ -154,6 +154,34 @@ const listarPosts = async (req,res) =>{
     }
 } 
 
+const deletePost = async (req,res) =>{
+    try {
+        const post = await getPostByID(req.params.id);
+
+        if(post.id_autor !== req.usuario.id){
+            return res.status(403).json({
+                error: "Forbidden: no eres el dueño"
+            })
+        }
+        const publicacion = usuarioModel.deletePost(post.id_autor);
+        if(!publicacion){
+            return res.status(400).json({
+                error : "error al eliminar post"
+            });
+        }
+        return res.status(200).json({
+            mensaje: "post eliminado",
+            post : publicacion
+        })
+
+
+    } catch (error) {
+        return res.status(500).json({
+            error : "error del servidor"
+        })
+    }
+}
+
 module.exports = {
     registrar,
     login,
@@ -161,5 +189,6 @@ module.exports = {
     crearPost,
     getPostByID,
     listarPosts,
+    deletePost
 
 };

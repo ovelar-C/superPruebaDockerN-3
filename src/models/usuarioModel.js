@@ -53,6 +53,15 @@ const obtenerPost = async(search, limit, offset)=>{
     const resultado = await pool.query(query,[search || '',limit,offset]);
     return resultado.rows;
 }
+const deletePost = async (id) =>{
+const query = `
+    DELETE FROM usuarios
+    WHERE id = $1
+    RETURNING *
+    `;
+    const resultado = await pool.query(query,[id]);
+    return resultado.rows[0];
+}
 
 module.exports = {
     crearUsuario,
@@ -60,5 +69,6 @@ module.exports = {
     buscarID,
     crearPost,
     getPostById,
-    obtenerPost
+    obtenerPost,
+    deletePost
 };
