@@ -38,7 +38,7 @@ const getPostById = async(id) =>{
     const query = `
     SELECT * 
     FROM publicaciones
-    WHERE id = $1`;
+    WHERE autor_id = $1`;
     const resultado = await pool.query(query,[id]);
     return resultado.rows[0];
 }
@@ -56,7 +56,7 @@ const obtenerPost = async(search, limit, offset)=>{
 const deletePost = async (id) =>{
 const query = `
     DELETE FROM usuarios
-    WHERE id = $1
+    WHERE autor_id = $1
     RETURNING *
     `;
     const resultado = await pool.query(query,[id]);

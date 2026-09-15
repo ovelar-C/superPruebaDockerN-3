@@ -156,14 +156,14 @@ const listarPosts = async (req,res) =>{
 
 const deletePost = async (req,res) =>{
     try {
-        const post = await getPostByID(req.params.id);
-
-        if(post.id_autor !== req.usuario.id){
+        const post = await usuarioModel.getPostById(req.params.id);
+        if(post.autor_id !== req.usuario.id){
             return res.status(403).json({
                 error: "Forbidden: no eres el dueño"
             })
         }
-        const publicacion = usuarioModel.deletePost(post.id_autor);
+
+        const publicacion = usuarioModel.deletePost(post.autor_id);
         if(!publicacion){
             return res.status(400).json({
                 error : "error al eliminar post"

@@ -11,6 +11,8 @@ router.post('/registro', usuarioController.registrar);
 router.post('/login', usuarioController.login);
 router.post('/publicacion', verificar, usuarioController.crearPost);
 
+router.delete('/:id' ,  verificar ,usuarioController.deletePost);
+
 
 
 module.exports = router;
