@@ -129,6 +129,7 @@ const getPostByID = async (req, res) => {
     }
 }
 
+//solo el admin
 const listarPosts = async (req,res) =>{
     try {
         //paginacion
