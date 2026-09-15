@@ -10,19 +10,19 @@ const registrar = async (req, res) => {
 
         if (!(registro.validar(password))) {
             return res.status(400).json({
-                error: "contraseña debilucha"
+                error: "contraseña debil"
             });
         }
         const passHash = await registro.hashear(password);
 
         await usuarioModel.crearUsuario(username, email, passHash);
-        res.status(201).json({
+         return res.status(201).json({
             mensaje: 'usuario registrado'
         });
 
     } catch (error) {
         console.error('[ERROR]:', error);
-        res.status(500).json({
+        return res.status(500).json({
             error: 'Error en dervidor'
         });
     }
@@ -57,7 +57,10 @@ const login = async (req, res) => {
             { expiresIn: '2h' }
         );
 
-        return res.status(200).json({ token });
+        return res.status(200).json({ 
+            toke : token,
+            usuario : usuario
+         });
 
     } catch (error) {
         return res.status(500).json({
@@ -81,7 +84,7 @@ const perfil = async (req, res) => {
             id: usuario.id,
             username: usuario.username,
             email: usuario.email,
-            rol: usuario.rol
+            rol: usuario.id_rol
         });
 
     } catch (error) {
@@ -146,10 +149,10 @@ const listarPosts = async (req,res) =>{
                 mensjae: "eeror no posts"
             });
         }
-        res.status(200).json(publicaciones);
+        return res.status(200).json(publicaciones);
 
     } catch (error) {
-          res.status(500).json({
+        return res.status(500).json({
             mensaje: "error del servidor"
         });
     }
@@ -158,7 +161,7 @@ const listarPosts = async (req,res) =>{
 const deletePost = async (req,res) =>{
     try {
         const post = await usuarioModel.getPostById(req.params.id);
-        if(post.autor_id !== req.usuario.id){
+        if(post.id_autor !== req.usuario.id){
             return res.status(403).json({
                 error: "Forbidden: no eres el dueño"
             })
