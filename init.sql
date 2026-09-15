@@ -1,10 +1,9 @@
 /* segun chatjept esto ta mal
 no se puede crear una db y despues una tabla en la misma 
 conexion
+*/
 CREATE DATABASE IF NOT EXISTS prueba;
 USE prueba;
-*/
-
 
 CREATE TABLE roles(
     id SERIAL PRIMARY KEY,
