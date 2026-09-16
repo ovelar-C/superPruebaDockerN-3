@@ -23,7 +23,7 @@ const registrar = async (req, res) => {
     } catch (error) {
         console.error('[ERROR]:', error);
         return res.status(500).json({
-            error: 'Error en dervidor'
+            error: 'Error en servidor'
         });
     }
 };

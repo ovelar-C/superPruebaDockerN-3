@@ -25,7 +25,7 @@ CREATE TABLE publicaciones(
     autor_id INTEGER NOT NULL,
 
     CONSTRAINT fk_user_autor
-    FOREIGN KEY (id_autor)
+    FOREIGN KEY (autor_id)
     REFERENCES usuarios(id)
 );
 
