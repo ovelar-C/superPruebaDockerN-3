@@ -48,18 +48,21 @@ const login = async (req, res) => {
         //no pass en el payload(IMPORTANTE MEGA SUPER)
         const payload = {
             id: usuario.id,
-            rol: usuario.rol
+            rol: usuario.rol_id
         }
         //firmar token 
         const token = jwt.sign(
             payload,
             process.env.JWT_SECRET,
             { expiresIn: '2h' }
-        );s
+        );
 
         return res.status(200).json({ 
             token : token,
-            usuario : usuario.username
+            usuario : {
+                username : usuario.username,
+                email : usuario.email
+            }
          });
 
     } catch (error) {
