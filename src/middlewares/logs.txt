@@ -17,3 +17,12 @@
 [2026-09-16T01:05:16.307Z] DELETE /api/usuarios/publicacion/26
 [2026-09-16T01:05:49.973Z] DELETE /api/usuarios/publicacion/26
 [2026-09-16T01:06:09.493Z] DELETE /api/usuarios/publicacion/26
+[2026-09-16T01:42:39.184Z] POST /api/usuarios/registro
+[2026-09-16T01:43:02.557Z] POST /api/usuarios/login
+[2026-09-16T01:45:09.899Z] GET /api/usuarios/perfil
+[2026-09-16T01:45:54.086Z] POST /api/usuarios/publicacion
+[2026-09-16T01:46:43.803Z] POST /api/usuarios/publicacion
+[2026-09-16T01:47:12.267Z] POST /api/usuarios/publicacion
+[2026-09-16T01:47:30.890Z] GET /api/usuarios/perfil
+[2026-09-16T01:47:44.897Z] GET /api/usuarios/publicaciones/27
+[2026-09-16T01:48:02.564Z] DELETE /api/usuarios/publicacion/27

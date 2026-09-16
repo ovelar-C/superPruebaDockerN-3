@@ -1,61 +1,102 @@
-readme básico pero directo
-api de usuarios y publicaciones
+API de Usuarios y Publicaciones
 
-# • api/usuarios/
+API REST para la gestión de usuarios y publicaciones.
 
-registrar usuario
-post|localhost:3000/api/usuarios/registro
+Base URL: http://localhost:3000/api/usuarios
+
+Usuarios
+Registrar usuario
+
+POST /registro
+
+Registra un nuevo usuario.
+
+Body
 {
-    "username" : "noobMaster3000",
-    "email" : "fulano@gmail.com",
-    "password" : "8caracteresAa"
-}
-el password solo es válido mínimo si tiene 8 caracteres, un número y una mayusculas
-
-
-iniciar sesion | generación de token
-post|localhost:3000/api/usuarios/login
-{
-    "email" : "fulano@gmail.com",
-    "password" : "8caracteresAa"
+  "username": "string",
+  "email": "string",
+  "password": "string"
 }
 
-datos del usuario
-get|localhost:3000/api/usuarios/perfil
+
+La contraseña debe cumplir con los siguientes requisitos:
+
+Mínimo 8 caracteres.
+
+Al menos un número.
+
+Al menos una letra mayúscula.
+
+Iniciar sesión
+
+POST /login
+
+Autentica un usuario y genera un token de acceso.
+
+Body
 {
-    "id": 1,
-    "username" : "noobMaster3000",
-    "email" : "fulano@gmail.com"
+  "email": "string",
+  "password": "string"
 }
 
-publicar publicacion
-post|localhost:3000/api/usuarios/publicacion
+Obtener perfil
+
+GET /perfil
+
+Obtiene los datos del usuario autenticado.
+
+Response
 {
-    "titulo" : "Como hablar del Comunismo a mi Mascota",
-    "contenido" : "1° paso : tener mascota"
+  "id": 1,
+  "username": "string",
+  "email": "string"
 }
 
-mostrar todas las publicaciones de todos los usuarios
-get|localhost:3000/api/usuarios/publicaciones
+Publicaciones
+Crear publicación
 
-mostrar una publicacion en especifico por id
-get|localhost:3000/api/usuarios/publicaciones/:id
+POST /publicacion
 
-borrar publicacion
-delete|localhost:3000/api/usuarios/publicacion/:id
+Crea una nueva publicación asociada al usuario autenticado.
 
+Body
+{
+  "titulo": "string",
+  "contenido": "string"
+}
 
+Obtener todas las publicaciones
 
+GET /publicaciones
 
+Obtiene todas las publicaciones disponibles.
 
+Obtener una publicación
 
+GET /publicaciones/:id
 
-• get /perfil
-• get /publicaciones
-• get /publicaciones/:id
+Obtiene una publicación específica mediante su ID.
 
-• post /registro
-• post /login
-• post /publicacion
+Parámetros:
 
-• delete /publicacion/:id
+id: identificador de la publicación.
+
+Eliminar publicación
+
+DELETE /publicacion/:id
+
+Elimina una publicación mediante su ID.
+
+Parámetros:
+
+id: identificador de la publicación.
+
+Resumen de endpoints
+Método	Endpoint	Descripción
+POST	/registro	Registrar usuario
+POST	/login	Iniciar sesión y generar token
+GET	/perfil	Obtener perfil del usuario autenticado
+POST	/publicacion	Crear publicación
+GET	/publicaciones	Obtener todas las publicaciones
+GET	/publicaciones/:id	Obtener una publicación por ID
+DELETE	/publicacion/:id	Eliminar una publicación por ID

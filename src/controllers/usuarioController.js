@@ -55,11 +55,11 @@ const login = async (req, res) => {
             payload,
             process.env.JWT_SECRET,
             { expiresIn: '2h' }
-        );
+        );s
 
         return res.status(200).json({ 
-            toke : token,
-            usuario : usuario
+            token : token,
+            usuario : usuario.username
          });
 
     } catch (error) {
@@ -88,9 +88,9 @@ const perfil = async (req, res) => {
         });
 
     } catch (error) {
-        console.log('errror', error);
         return res.status(500).json({
-            error: 'error de servidor'
+            mensaje: 'error de servidor',
+            error: error
         });
     };
 }
@@ -106,7 +106,8 @@ const crearPost = async (req, res) => {
         });
     } catch (error) {
         return res.status(500).json({
-            mensaje: "error server"
+            mensaje: "error server",
+            error: error
         });
     }
 }
@@ -146,7 +147,7 @@ const listarPosts = async (req,res) =>{
         );
         if(publicaciones.length === 0){
             res.status(404).json({
-                mensjae: "eeror no posts"
+                mensjae: "error no posts"
             });
         }
         return res.status(200).json(publicaciones);
