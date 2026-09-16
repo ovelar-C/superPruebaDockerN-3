@@ -10,7 +10,7 @@ post|localhost:3000/api/usuarios/registro
     "email" : "fulano@gmail.com",
     "password" : "8caracteresAa"
 }
-el password solo es válido minimo si tiene 8 caracteres, un número y una mayusculas
+el password solo es válido mínimo si tiene 8 caracteres, un número y una mayusculas
 
 
 iniciar sesion | generación de token

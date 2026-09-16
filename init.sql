@@ -22,7 +22,7 @@ CREATE TABLE publicaciones(
     id SERIAL PRIMARY KEY,
     titulo VARCHAR (250) NOT NULL,
     contenido TEXT NOT NULL,
-    id_autor INTEGER NOT NULL,
+    autor_id INTEGER NOT NULL,
 
     CONSTRAINT fk_user_autor
     FOREIGN KEY (id_autor)
