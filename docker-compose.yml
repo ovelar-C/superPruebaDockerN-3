@@ -7,7 +7,7 @@ services:
       POSTGRES_PASSWORD: root123
       POSTGRES_DB: prueba
     ports:
-      -"5432:5432"
+      - "5432:5432"
     volumes:
       - ./init.sql:/docker-entrypoint-initdb.d/init.sql
 

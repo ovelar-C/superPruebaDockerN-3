@@ -101,11 +101,11 @@ const crearPost = async (req, res) => {
         const autor_id = req.usuario.id;
 
         await usuarioModel.crearPost(titulo, contenido, autor_id);
-        res.status(201).json({
+        return res.status(201).json({
             mensaje: "publicacion publicada"
         });
     } catch (error) {
-        res.status(500).json({
+        return res.status(500).json({
             mensaje: "error server"
         });
     }
