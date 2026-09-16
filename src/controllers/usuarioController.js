@@ -171,7 +171,7 @@ const deletePost = async (req,res) =>{
             })
         }
 
-        const publicacion = usuarioModel.deletePost(post.autor_id);
+        const publicacion = await usuarioModel.deletePost(post.autor_id);
         if(!publicacion){
             return res.status(400).json({
                 error : "error al eliminar post"
@@ -179,7 +179,10 @@ const deletePost = async (req,res) =>{
         }
         return res.status(200).json({
             mensaje: "post eliminado",
-            post : publicacion
+            post : {
+                titulo : publicacion.titulo,
+                contenido : publicacion.contenido
+            }
         })
 
 

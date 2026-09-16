@@ -55,7 +55,7 @@ const obtenerPost = async(search, limit, offset)=>{
 }
 const deletePost = async (id) =>{
     const query = `
-    DELETE FROM usuarios
+    DELETE FROM publicaciones
     WHERE autor_id = $1
     RETURNING *
     `;
